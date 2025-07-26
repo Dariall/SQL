@@ -12,9 +12,19 @@ END
 IF NOT EXISTS (
     SELECT * 
     FROM INFORMATION_SCHEMA.COLUMNS 
-    WHERE TABLE_NAME = N'Студенты' AND COLUMN_NAME = N'Экзаменационный балл'
+    WHERE TABLE_NAME = N'Студенты' AND COLUMN_NAME = N'Балл'
 )
 BEGIN
     ALTER TABLE Студенты
     ADD [Экзаменационный балл] INT;
+END
+
+IF NOT EXISTS (
+    SELECT * 
+    FROM INFORMATION_SCHEMA.COLUMNS 
+    WHERE TABLE_NAME = N'Студенты' AND COLUMN_NAME = N'Направление'
+)
+BEGIN
+    ALTER TABLE Студенты
+    ADD [Направление] NVARCHAR(100);
 END
